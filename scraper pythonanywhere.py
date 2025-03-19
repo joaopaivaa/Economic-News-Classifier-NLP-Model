@@ -4,11 +4,7 @@ import pandas as pd
 import os
 from datetime import date
 
-
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-print(BASE_DIR)
-
 
 # Função para obter o HTML de uma página
 def get_html(url):
@@ -100,7 +96,7 @@ def get_news():
 
     return news
 
-past_news = pd.read_csv(BASE_DIR + "/Brazilian News Database.csv", sep=';')
+past_news = pd.read_csv(BASE_DIR + "/Brazilian News Database.csv", sep=';', encoding="utf-8")
 
 today_news = get_news()
 
