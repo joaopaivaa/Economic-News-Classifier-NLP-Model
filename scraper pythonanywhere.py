@@ -5,7 +5,9 @@ import os
 from datetime import date
 
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+print(BASE_DIR)
 
 
 # Função para obter o HTML de uma página
@@ -57,7 +59,7 @@ def cnn_scraper():
 def infomoney_scraper():
 
     # InfoMoney
-    
+
     df = pd.DataFrame(columns=['date','journal','title','text'])
 
     main_page = get_html("https://www.infomoney.com.br/economia/")
@@ -98,10 +100,9 @@ def get_news():
 
     return news
 
-
-past_news = pd.read_csv(os.path.join(BASE_DIR, "/Economic-News-Classifier-NLP-Model/Brazilian News Database.csv"), sep=';')
+past_news = pd.read_csv(BASE_DIR + "/Brazilian News Database.csv", sep=';')
 
 today_news = get_news()
 
 news = pd.concat([past_news, today_news], ignore_index=True)
-news.to_csv(os.path.join(BASE_DIR, "/Economic-News-Classifier-NLP-Model/Brazilian News Database.csv"), sep=';', index=False)
+news.to_csv(BASE_DIR + "/Brazilian News Database.csv", sep=';', encoding="utf-8", index=False)
