@@ -99,6 +99,10 @@ def get_news():
 past_news = pd.read_csv(BASE_DIR + "/Brazilian News Database.csv", sep=';', encoding="utf-8")
 
 today_news = get_news()
+today_news['status'] = None
+
+print(past_news.columns)
+print(today_news.columns)
 
 news = pd.concat([past_news, today_news], ignore_index=True)
 news.to_csv(BASE_DIR + "/Brazilian News Database.csv", sep=';', encoding="utf-8", index=False)
