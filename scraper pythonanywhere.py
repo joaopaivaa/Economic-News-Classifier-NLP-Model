@@ -21,7 +21,7 @@ def cnn_scraper():
 
     main_page = get_html("https://www.cnnbrasil.com.br/economia/")
 
-    sections = main_page.select("div.col__l--4")
+    sections = main_page.select("div.grid-cols-1")
 
     for i in range(1):
         section = sections[i]
@@ -89,11 +89,12 @@ def infomoney_scraper():
 
 
 def get_news():
-    cnn_news = cnn_scraper()
+    #cnn_news = cnn_scraper()
     infomoney_news = infomoney_scraper()
 
-    news = pd.concat([cnn_news, infomoney_news], ignore_index=True)
-
+    #news = pd.concat([cnn_news, infomoney_news], ignore_index=True)
+    news = infomoney_news
+    
     return news
 
 past_news = pd.read_csv(BASE_DIR + "/Brazilian News Database.csv", sep=';', encoding="utf-8")
