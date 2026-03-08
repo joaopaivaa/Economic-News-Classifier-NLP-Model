@@ -94,7 +94,7 @@ def get_news():
 
     #news = pd.concat([cnn_news, infomoney_news], ignore_index=True)
     news = infomoney_news
-    
+
     return news
 
 past_news = pd.read_csv(BASE_DIR + "/Brazilian News Database.csv", sep=';', encoding="utf-8")
